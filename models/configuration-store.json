@@ -1,0 +1,30 @@
+{
+  "Configuration Collection": [
+    {
+      "id": "82a5cc00-60df-11ec-9126-ab7d67965599",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Test",
+      "readings": []
+    },
+    {
+      "id": "38088d50-60e3-11ec-9126-ab7d67965599",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Test",
+      "readings": []
+    }
+  ],
+  "configurationCollection": [
+    {
+      "id": "8e217f90-610a-11ec-9c17-3974ece34c75",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Afternoon",
+      "settings": []
+    },
+    {
+      "id": "94711950-610a-11ec-9c17-3974ece34c75",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "Morning",
+      "settings": []
+    }
+  ]
+}

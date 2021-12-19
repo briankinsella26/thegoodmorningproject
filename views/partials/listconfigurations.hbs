@@ -1,0 +1,15 @@
+<header class="ui header">
+  {{user.firstName}}
+  {{user.lastName}}'s configuration list
+</header>
+
+{{#each configurations}}
+  <section class="ui segment">
+    <h2 class="ui header">{{this.name}}</h2>
+    <div class="ui divider"></div>
+    <a href="/configuration/{{id}}" class="ui icon button"> <i class="folder icon"></i> </a>
+    <a href="/dashboard/deleteconfiguration/{{id}}" class="ui icon button">
+      <i class="icon trash"></i></a>
+  </section>
+{{/each}}
+{{addconfiguration}}

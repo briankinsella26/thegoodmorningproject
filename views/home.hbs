@@ -1,0 +1,50 @@
+{{#if user}}
+  {{> menu id="home"}}
+{{else}}
+  {{> welcomemenu id="home"}}
+{{/if}}
+<section class="ui center aligned middle aligned segment">
+  <br/>
+  <header>
+    <span class="ui header add-shadow">
+      <h1>the good morning project</h1>
+    </span>
+    <br/>
+    <span class="ui text">
+      <p> - for every season -</p>
+    </span>
+    <br/>
+  </header>
+  <div class="ui divider"></div>
+  <br/>
+  <div class="ui four column grid">
+    <div class="column">
+      <div class="ui segment">
+        <img class="ui medium image" src="https://rainy-stump-sesame.glitch.me/images/spring.png">
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <img class="ui medium image" src="https://rainy-stump-sesame.glitch.me/images/summer.png">
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <img class="ui medium image" src="https://rainy-stump-sesame.glitch.me/images/autumn.png">
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <img class="ui medium image" src="https://rainy-stump-sesame.glitch.me/images/winter.png">
+      </div>
+    </div>
+    <br/>
+  </div>
+  <br/>
+  <br/>
+  <div class="ui segment">
+    <p><strong>Random Weather Fact: </strong><em>"{{fact}}"</em></p>
+  </div>
+  <br/>
+</section>
+

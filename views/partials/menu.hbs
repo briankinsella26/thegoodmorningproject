@@ -1,0 +1,19 @@
+<nav class="ui menu black">
+  <header class="ui header item add-shadow"> <a href="/"> Weather-Top </a></header>
+  <div class="right menu">
+    <a id="dashboard" class="item" href="/dashboard"> Dashboard  </a>
+    <a id="about" class="item" href="/about"> About </a>
+  </div>
+  <div class="ui simple dropdown item">
+    My Profile
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <a id="profile" class="item" href="/profile"> Edit </a>
+      <a id="logout" class="item" href="/logout"> Logout </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  $("#{{id}}").addClass("active item");
+</script>

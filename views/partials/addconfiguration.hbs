@@ -1,0 +1,12 @@
+<form class="ui segment form" action="/dashboard/addconfiguration" method="POST">
+  <div class="one field">
+    <div class="field">
+      <label>Add Configuration</label>
+      <input placeholder="Configuration Name" type="text" name="name" minlength="1" maxlength="24" required="required">
+    </div>
+    <div class="field">
+      <label>Add Config Profile Photo</label>
+    <input type="file" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput"/>
+  </div>
+  <button class="ui blue submit button">Add Configuration</button>
+</form>
