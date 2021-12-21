@@ -1,53 +1,48 @@
-"use strict";
+import { MongoClient } from "mongodb";
 
-const _ = require("lodash");
-const JsonStore = require("./json-store");
+const uri = "mongodb+srv://briankinsella:PKdj7XcuL2xSQvW@cluster0.s7vay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+const database = MongoClient(uri).db("themorningprojectdb");
+const configurations = database.collection("configurations");
 
 const configurationStore = {
-  store: new JsonStore("./models/configuration-store.json", { configurationCollection: [] }),
-  collection: "configurationCollection",
 
-  getAllConfigurations() {
-    return this.store.findAll(this.collection);
+  async addConfiguration(configuration) {
+    const result = await configurations.insertOne(configuration);
+    console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    await client.close();
   },
 
-  getConfiguration(id) {
-    return this.store.findOneBy(this.collection, { id: id });
+  async getUserConfigurations(userid) {
+    await client.connect();
+    const userConfigurations = await configurations.find({userid: userid});
+    console.log(`A user document was inserted with the _id: ${result.insertedId}`);
+    await client.close();
+    return userConfigurations;
   },
 
-  getUserConfigurations(userid) {
-    let configurations = this.store.findBy(this.collection, { userid: userid });
-    return _.sortBy(configurations, (configuration) => configuration.name.toLowerCase());
+  async removeConfiguration(id) {
+    await client.connect();
+    const result = await configurations.deleteOne(id);
+    console.log(`A document was deleted with the _id: ${result.insertedId}`);
+    await client.close();
   },
 
-  addConfiguration(configuration) {
-    this.store.add(this.collection, configuration);
-    this.store.save();
+  async getConfiguration(id) {
+    await client.connect();
+    const configuration = await configurations.findOne({ id: id });
+    console.log(`A document was found with the _id: ${result.insertedId}`);
+    await client.close();
+    return configuration;
   },
 
-  removeConfiguration(id) {
-    const configuration = this.getConfiguration(id);
-    this.store.remove(this.collection, configuration);
-    this.store.save();
-  },
+  async addConfigSetting(id, setting) {
+    await client.connect();
+    const result = await configurations.updateOne({id: id}, setting);
+    console.log(`A document was updated with the _id: ${result.upsertedId}`);
+    await client.close();
+  }
 
-  removeAllConfigurations() {
-    this.store.removeAll(this.collection);
-    this.store.save();
-  },
+}
+module.exports = configurationStore
 
-  addConfigSetting(id, setting) {
-    const configuration = this.getConfiguration(id);
-    configuration.settings.push(setting);
-    this.store.save();
-  },
-
-  removeConfigSetting(id, settingId) {
-    const configuration = this.getConfiguration(id);
-    const settings = configuration.settings;
-    _.remove(settings, { id: settingId });
-    this.store.save();
-  },
-};
-
-module.exports = configurationStore;

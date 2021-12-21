@@ -939,7 +939,6 @@ if [ $? -eq 0 ] ; then
 fi
 
 if [ ! -f ${DEVTXT} -o ! -f ${DEVALL} ] ; then
-	echo "device list does not exist. downloading ..."
 	get_devlist
 	if [ ! -f ${DEVTXT} ] ; then
 		echo "failed to download device list, aborting"
@@ -1057,7 +1056,6 @@ elif [ -n "$HIST" ] ; then
 	play_prime_hist_queue
 elif [ -n "$LIST" ] ; then
 	ATTR="accountName"
-	echo "the following devices exist in your account:"
 	grep ${ATTR}\| ${DEVTXT} | sed "s/^.*${ATTR}|//" | sed 's/ /_/g'
 elif [ -n "$LASTALEXA" ] ; then
 	last_alexa

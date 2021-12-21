@@ -24,8 +24,7 @@ router.post("/dashboard/addconfiguration", dashboard.addConfiguration);
 
 router.get("/about", about.index);
 router.get("/configuration/:id", configuration.index);
-router.get("/configuration/getdevicelist", configuration.getDeviceList);
-router.post("/configuration/amazonlogin", configuration.login);
-router.post("/configuration/:id/addsetting", configuration.addSetting);
+router.post("/configuration/amazonlogin/:id", configuration.login);
+router.post("/configuration/addsetting/:id", configuration.addSetting);
 
 module.exports = router;
