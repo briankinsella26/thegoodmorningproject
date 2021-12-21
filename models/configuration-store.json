@@ -1,30 +1,65 @@
 {
-  "Configuration Collection": [
-    {
-      "id": "82a5cc00-60df-11ec-9126-ab7d67965599",
-      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
-      "name": "Test",
-      "readings": []
-    },
-    {
-      "id": "38088d50-60e3-11ec-9126-ab7d67965599",
-      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
-      "name": "Test",
-      "readings": []
-    }
-  ],
   "configurationCollection": [
     {
       "id": "8e217f90-610a-11ec-9c17-3974ece34c75",
       "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "name": "Afternoon",
-      "settings": []
+      "settings": [
+        {
+          "name": "Brian",
+          "starttime": "12:00",
+          "endtime": "15:59",
+          "info": "wind",
+          "playbackDateStamp": "2021-12-21"
+        }
+      ],
+      "devices": []
     },
     {
       "id": "94711950-610a-11ec-9c17-3974ece34c75",
       "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "name": "Morning",
-      "settings": []
+      "settings": [
+        {
+          "name": "Gill",
+          "starttime": "00:00",
+          "endtime": "11:59",
+          "info": "rain",
+          "playbackDateStamp": "2021-12-01"
+        }
+      ],
+      "devices": []
+    },
+    {
+      "id": "986c2530-618d-11ec-b652-27014d6c7aff",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "name": "night",
+      "settings": [
+        {
+          "name": "kate",
+          "starttime": "16:00",
+          "endtime": "22:00",
+          "info": "todays calendar",
+          "playbackDateStamp": "2021-12-11"
+        }
+      ],
+      "devices": [
+        [
+          "Gillian's_3rd_Fire",
+          "Everywhere",
+          "Kitchen__Echo",
+          "Logan's_Echo_Dot",
+          "Gillian's_Echo",
+          "Kate's_Echo_Dot",
+          "This_Device",
+          "Gillian's_Alexa_Apps",
+          "Brian's_Fire_TV",
+          "Brian's_2nd_Fire_TV",
+          "This_Device",
+          "Brian's_Alexa_Apps",
+          ""
+        ]
+      ]
     }
   ]
 }

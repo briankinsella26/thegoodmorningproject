@@ -1,7 +1,7 @@
 "use strict";
 
 const logger = require("../utils/logger");
-const configurationStore = require("../models/configuration-store");
+const configurationStore = require("../models/configuration-store").default;
 const uuid = require("uuid");
 var exec = require('child_process').exec, child;
 
@@ -15,43 +15,36 @@ const configuration = {
     };
     response.render("configuration", viewData);
   },
-  
 
   login(request, reponse){
-    const user = request.body;
-    const myShellScript = exec('sh ./utils/alexaRemote.sh -login' );
-    myShellScript.stdout.on('data', (data)=>{
-    console.log(data); 
+    const configurationId = request.params.id;
+    const executeLogin = exec('sh ./utils/alexaRemote.sh -login' );
+    executeLogin.stdout.on('data', (data)=>{
     });
-      myShellScript.stderr.on('data', (data)=>{
-          console.error(data);
+    executeLogin.stderr.on('data', (data)=>{
+      console.error(data);
     });
-  },
-  
-
-  getDeviceList(request, response){
-    const myShellScript = exec('sh ./utils/alexaRemote.sh -a > deviceList.txt' );
-    myShellScript.stdout.on('data', (data)=>{
-    console.log(data); 
+    const getDeviceList = exec('sh ./utils/alexaRemote.sh -a | tee deviceList.txt' );
+    getDeviceList.stdout.on('data', (data)=>{
+      configurationStore.addConfigDeviceList(configurationId, data)
     });
-      myShellScript.stderr.on('data', (data)=>{
-          console.error(data);
+    getDeviceList.stderr.on('data', (data)=>{
+      console.error(data);
     });
   },
 
   addSetting(request, response) {
+    console.log(request.body);
     const configurationId = request.params.id;
     const newSetting = {
-      date: new Date().toLocaleString(),
-      id: uuid.v1(),
-      code: Number(request.body.code),
-      temperature: Number(request.body.temperature),
-      windSpeed: Number(request.body.windSpeed),
-      windDirection: Number(request.body.windDirection),
-      pressure: Number(request.body.pressure),
+      // device: request.params.device,
+      name: request.body.name,
+      starttime: request.body.starttime,
+      endtime: request.body.endtime,
+      info: request.body.info
     };
-    logger.debug("New reading = ", newSetting);
-    configurationStore.addSetting(configurationId, newSetting);
+    logger.debug("New setting = ", newSetting);
+    configurationStore.addConfigSetting(configurationId, newSetting);
     response.redirect("/configuration/" + configurationId);
   }
 };

@@ -1,8 +1,7 @@
-"use strict";
+import configurationStore from configurationStore;
 
 const accounts = require("./accounts.js");
 const logger = require("../utils/logger");
-const configurationStore = require("../models/configuration-store");
 const uuid = require("uuid");
 
 const dashboard = {
@@ -31,6 +30,7 @@ const dashboard = {
       userid: loggedInUser.id,
       name: request.body.name,
       settings: [],
+      devices: []
     };
     logger.debug("Creating a new Configuration", newConfiguration);
     configurationStore.addConfiguration(newConfiguration);
