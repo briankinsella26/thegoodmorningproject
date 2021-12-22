@@ -14,7 +14,6 @@ const home = {
     
     const viewData = {
       title: "the good morning project",
-      fact: randomFact,
       user: user,
     };
     response.render("home", viewData);
