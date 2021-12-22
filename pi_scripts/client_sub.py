@@ -9,7 +9,6 @@ import subprocess
 import user_details
 import time
 
-
 # Define event callbacks
 def on_connect(client, userdata, flags, rc):
     print("Connection Result: " + str(rc))
@@ -17,18 +16,20 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, obj, msg):
     print("Topic:"+msg.topic + ",Payload:" + str(msg.payload))
     if user_details.isNotificationScheduled() == True:
-        fileLoc = f'/home/pi/theGoodMorningProject/images/snapshot.jpg'
-        currentTime = datetime.datetime.now().strftime("%H:%M:%S")
-        camera = PiCamera()
-        camera.start_preview()
-        camera.capture(fileLoc)
-        camera.close()
-        print(f'snapshot taken at {currentTime}')
-        commands=user_details.getUserCommands()
-        print(commands)
+        # fileLoc = f'/home/pi/theGoodMorningProject/images/snapshot.jpg'
+        # currentTime = datetime.datetime.now().strftime("%H:%M:%S")
+        # camera = PiCamera()
+        # camera.start_preview()
+        # camera.capture(fileLoc)
+        # camera.close()
+        # print(f'snapshot taken at {currentTime}')
+        commands=user_details.getUserConfiguration()
+        email=f"'{commands[2]}'"
+        password=f"'{commands[2]}'"
         goodMorning=f"'Good {commands[0]} {commands[1]}'"
         playbackInformation=f"'{commands[2]}'"
-        subprocess.run("/home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e speak:" + goodMorning, shell=True)
+        print('Try again buddy')
+        subprocess.run("EMAIL=" + email + " PASSWORD=" + password + " /home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e speak:" + goodMorning, shell=True)
         subprocess.run("/home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e textcommand:" + playbackInformation, shell=True)
     
 

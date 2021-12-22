@@ -40,4 +40,4 @@ while True:
     pir.wait_for_motion()
     mqttc.publish(base_topic+"/pir", state, 1)
     pir.wait_for_no_motion()
-    time.sleep(5)
+    time.sleep(10)
