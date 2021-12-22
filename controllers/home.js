@@ -1,7 +1,6 @@
 "use strict";
 
 const logger = require("../utils/logger");
-const randomFact = require("../utils/random-facts");
 const accounts = require("./accounts.js");
 
 const home = {
