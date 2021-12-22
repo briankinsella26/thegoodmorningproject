@@ -21,8 +21,8 @@
 #
 ##########################################
 
-# SET_EMAIL=''
-# SET_PASSWORD=''
+SET_EMAIL=''
+SET_PASSWORD=''
 # SET_MFA_SECRET=''
 # something like:
 #  1234 5678 9ABC DEFG HIJK LMNO PQRS TUVW XYZ0 1234 5678 9ABC DEFG
@@ -146,6 +146,9 @@ usage()
 	echo "   -l : logoff"
 	echo "   -h : help"
 }
+
+echo email is $EMAIL
+echo password is $PASSWORD
 
 while [ "$#" -gt 0 ] ; do
 	case "$1" in
