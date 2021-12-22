@@ -1,28 +1,13 @@
-<form class="ui segment form" action="/configuration/amazonlogin/{{configuration.id}}" method="POST">
+<form class="ui segment form" action="/configuration/addsetting/{{configuration.id}}" method="POST">
   <div class="one field">
     <div class="field">
       <label>Amazon email</label>
-      {{con}}
-      <input placeholder="email@example.com" type="email" name="email" minlength="1" required="required">
+      <input placeholder="email@example.com" type="email" name="amemail" minlength="1" required="required">
     </div>
     <div class="field">
       <label>Amazon password</label>
-      <input placeholder="password" type="text" name="amazonpassword" minlength="1" required="required" />
-    </div>
-  <button class="ui blue submit button">Login</button>
+      <input placeholder="password" type="text" name="ampassword" minlength="1" required="required" />
   </div>
-</form>
-{{!-- <form class="ui segment form" action="/configuration/devicelist" method="GET">
-    <div class="field">
-      <label>Playback Device</label>
-      <select class="ui fluid dropdown" name="devices">
-        {{#each ../../devicelist.txt}
-          <option value="{{ColourID}}">{{Name}}</option>
-        {{/each}}
-      </select>
-    </div>
-</form> --}}
-<form class="ui segment form" action="/configuration/addsetting/{{configuration.id}}" method="POST">
   <div class="one field">
     <div class="field">
       <label>Your name (for playback)</label>

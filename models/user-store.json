@@ -34,6 +34,13 @@
       "email": "test@test.com",
       "password": "test",
       "id": "a490d320-109c-11ec-a762-7b41332bfce6"
+    },
+    {
+      "firstName": "Charles F",
+      "lastName": "Xavier",
+      "email": "cfxavier@test.com",
+      "password": "secret",
+      "id": "be1492e0-6322-11ec-a030-2713062d320f"
     }
   ]
 }

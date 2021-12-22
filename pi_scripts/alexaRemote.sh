@@ -21,9 +21,9 @@
 #
 ##########################################
 
-SET_EMAIL=kinsella.gill@gmail.com
-SET_PASSWORD=ARiver2510
-SET_MFA_SECRET=''
+# SET_EMAIL=''
+# SET_PASSWORD=''
+# SET_MFA_SECRET=''
 # something like:
 #  1234 5678 9ABC DEFG HIJK LMNO PQRS TUVW XYZ0 1234 5678 9ABC DEFG
 

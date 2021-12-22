@@ -1,39 +1,39 @@
-import configurationStore from configurationStore;
-
+const configurationStore = require("../models/configuration-store")
 const accounts = require("./accounts.js");
 const logger = require("../utils/logger");
 const uuid = require("uuid");
 
 const dashboard = {
-  index(request, response) {
+  async index(request, response) {
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
+    configurations = await configurationStore.getUserConfigurations(loggedInUser.id);
     const viewData = {
       title: "Configuration Dashboard",
-      configurations: configurationStore.getUserConfigurations(loggedInUser.id),
+      configurations: configurations,
       user: loggedInUser,
     };
     response.render("dashboard", viewData);
   },
 
-  deleteConfiguration(request, response) {
+  async deleteConfiguration(request, response) {
     const configurationId = request.params.id;
     logger.debug(`Deleting Station ${configurationId}`);
-    configurationStore.removeConfiguration(configurationId);
+    await configurationStore.removeConfiguration(configurationId);
     response.redirect("/dashboard");
   },
 
-  addConfiguration(request, response) {
+  async addConfiguration(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);
     const newConfiguration = {
       id: uuid.v1(),
       userid: loggedInUser.id,
       name: request.body.name,
       settings: [],
-      devices: []
+      devices: [],
     };
     logger.debug("Creating a new Configuration", newConfiguration);
-    configurationStore.addConfiguration(newConfiguration);
+    await configurationStore.addConfiguration(newConfiguration);
     response.redirect("/dashboard");
   },
 };

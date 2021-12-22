@@ -5,6 +5,10 @@ const logger = require("./utils/logger");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const Handlebars = require('handlebars');
+const hbs = require('express-handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+
 
 const app = express();
 app.use(cookieParser());
@@ -17,7 +21,7 @@ app.engine(
   exphbs({
     extname: ".hbs",
     defaultLayout: "main",
-  })
+    handlebars: allowInsecurePrototypeAccess(Handlebars)})
 );
 app.set("view engine", ".hbs");
 

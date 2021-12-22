@@ -1,46 +1,72 @@
-import { MongoClient } from "mongodb";
-
+const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://briankinsella:PKdj7XcuL2xSQvW@cluster0.s7vay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-const database = MongoClient(uri).db("themorningprojectdb");
-const configurations = database.collection("configurations");
 
 const configurationStore = {
 
   async addConfiguration(configuration) {
-    const result = await configurations.insertOne(configuration);
-    console.log(`A document was inserted with the _id: ${result.insertedId}`);
-    await client.close();
+    const client = new MongoClient(uri);
+    const db = client.db("themorningprojectdb");
+    const configurations = db.collection("configurations");
+    try {
+      await client.connect();
+      const result = await configurations.insertOne(configuration);
+    } finally {
+      await client.close();
+    }
+    console.log('here in ad configuration')
   },
 
-  async getUserConfigurations(userid) {
-    await client.connect();
-    const userConfigurations = await configurations.find({userid: userid});
-    console.log(`A user document was inserted with the _id: ${result.insertedId}`);
-    await client.close();
+   async getUserConfigurations(userId) {
+    const client = new MongoClient(uri);
+    const db = client.db("themorningprojectdb");
+    const configurations = db.collection("configurations");
+    let userConfigurations;
+    try {
+      await client.connect();
+      const cursor = configurations.find({});
+      userConfigurations = await cursor.toArray();
+    } finally {
+      await client.close();
+    }
     return userConfigurations;
   },
 
   async removeConfiguration(id) {
-    await client.connect();
-    const result = await configurations.deleteOne(id);
-    console.log(`A document was deleted with the _id: ${result.insertedId}`);
-    await client.close();
+    const client = new MongoClient(uri);
+    const db = client.db("themorningprojectdb");
+    const configurations = db.collection("configurations");
+    try {
+      await client.connect();
+      await configurations.deleteOne({ id: id} );
+    } finally {
+      await client.close();
+    }
   },
 
   async getConfiguration(id) {
-    await client.connect();
-    const configuration = await configurations.findOne({ id: id });
-    console.log(`A document was found with the _id: ${result.insertedId}`);
-    await client.close();
-    return configuration;
+    const client = new MongoClient(uri);
+    const db = client.db("themorningprojectdb");
+    const configurations = db.collection("configurations");
+    var configuration;
+    try {
+      await client.connect();
+      configuration = await configurations.findOne({ id: id });
+    } finally {
+      await client.close();
+    }
+    return configuration
   },
 
   async addConfigSetting(id, setting) {
-    await client.connect();
-    const result = await configurations.updateOne({id: id}, setting);
-    console.log(`A document was updated with the _id: ${result.upsertedId}`);
-    await client.close();
+    const client = new MongoClient(uri);
+    const db = client.db("themorningprojectdb");
+    const configurations = db.collection("configurations");
+    try {
+      await client.connect();
+      await configurations.updateOne({id: id}, {$set: {"settings": [setting]}});
+    } finally {
+      await client.close();
+    }
   }
 
 }

@@ -7,6 +7,7 @@
 		"start": "node server.js"
 	},
 	"dependencies": {
+		"@handlebars/allow-prototype-access": "^1.0.5",
 		"alexa-cookie": "0.0.20",
 		"alexa-cookie2": "^4.0.1",
 		"axios": "^0.21.4",
