@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from os import wait
 import paho.mqtt.client as mqtt
 from urllib.parse import urlparse
 import sys
@@ -24,13 +25,13 @@ def on_message(client, obj, msg):
         # camera.close()
         # print(f'snapshot taken at {currentTime}')
         commands=user_details.getUserConfiguration()
-        email=f"'{commands[2]}'"
-        password=f"'{commands[2]}'"
-        goodMorning=f"'Good {commands[0]} {commands[1]}'"
-        playbackInformation=f"'{commands[2]}'"
-        print('Try again buddy')
+        email=f"'{commands[0]}'"
+        password=f"'{commands[1]}'"
+        goodMorning=f"'Good {commands[2]} {commands[3]}'"
+        playbackInformation=f"'{commands[4]}'"
         subprocess.run("EMAIL=" + email + " PASSWORD=" + password + " /home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e speak:" + goodMorning, shell=True)
-        subprocess.run("/home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e textcommand:" + playbackInformation, shell=True)
+        time.sleep(1)
+        subprocess.run("EMAIL=" + email + " PASSWORD=" + password + " /home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e textcommand:" + playbackInformation, shell=True)
     
 
 def on_subscribe(client, obj, mid, granted_qos):
