@@ -21,7 +21,9 @@ Limitations/Bugs:
 - Amazon Alexa was particularly difficult to integrate with (i should have went with google), the cookies are a constant issue that I have yet to 100% resolve, causing login issues with the script (ran out of time)
 - As the script was sending commands to Alexa, I had no call back or response to know when that specfic playback was finished so I could commence the next one (time.sleep was my best bet here)
 - There were far more options available to playback that would have been much cooler than the few I included, such as routines, which can bundle commands, but this was based off a newer script with some bugs. I resolved a few, but used up too much of my day on it today and needed to tidy up other things.
-- There's very little error handling included in the code.
+- Needs more error handling.
+- Needs better encryption
+- Can't get a static IP from Heroku on free tier to whitelist in MongoDB Atlas, so DB is not locked down
 
 
 Technologies:
