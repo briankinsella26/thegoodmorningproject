@@ -17,13 +17,6 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, obj, msg):
     print("Topic:"+msg.topic + ",Payload:" + str(msg.payload))
     if user_details.isNotificationScheduled() == True:
-        # fileLoc = f'/home/pi/theGoodMorningProject/images/snapshot.jpg'
-        # currentTime = datetime.datetime.now().strftime("%H:%M:%S")
-        # camera = PiCamera()
-        # camera.start_preview()
-        # camera.capture(fileLoc)
-        # camera.close()
-        # print(f'snapshot taken at {currentTime}')
         commands=user_details.getUserConfiguration()
         email=f"'{commands[0]}'"
         password=f"'{commands[1]}'"
@@ -33,7 +26,6 @@ def on_message(client, obj, msg):
         time.sleep(1)
         subprocess.run("EMAIL=" + email + " PASSWORD=" + password + " /home/pi/git/thegoodmorningproject/pi_scripts/alexaRemote.sh -e textcommand:" + playbackInformation, shell=True)
     
-
 def on_subscribe(client, obj, mid, granted_qos):
     print("Subscribed,  QOS granted: "+ str(granted_qos))
 
