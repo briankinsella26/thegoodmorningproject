@@ -2,7 +2,7 @@
 - Author: Brian Kinsella
 - Student number: 16728365
 - Web app: https://pure-ridge-08979.herokuapp.com
-- Youtube: 
+- Youtube: https://youtu.be/WU3bDO0hIbs
 
 Purpose:
 - The good morning project is a smart home integration consisting of a device, sensor and web interface. It is used to provide the user with specific information such as weather forecast or items on the user's calendar via Amazon Alexa upon entry to a room. The experience is such that the user should feel like the Alexa device has sensed they have entered the room,and provided them with relevant information depending on the user's configuration
