@@ -1,4 +1,6 @@
 <form class="ui segment form" action="/configuration/addsetting/{{configuration.id}}" method="POST">
+  <h3 class="ui header">Playback Settings</h3>
+  <div class="ui divider"></div>
   <div class="one field">
     <div class="field">
       <label>Amazon email</label>
@@ -22,14 +24,40 @@
       <input type="time" name="endtime" required="required" />
     </div>
   </div>
-  <div class="field"
-    <label>Playback Information</label>
-    <select class="ui fluid searchdropdown" name="info">
-      <option value="">Select</option>
-      <option value="rain">Rain Forecast</option>
-      <option value="wind">Wind Forecast</option>
-      <option value="calendar">Calendar</option>
-    </select>
-  </div>
+  <h3 class="ui header">Playback Information</h3>
+    <div class="ui divider"></div>
+    <div class="one field">
+      <div class="field"
+        <label>Custom Text Playback</label>
+        <input placeholder="" type="text" name="customtext" minlength="1"/>
+      </div>
+      <div class="field"
+        <label>Weather Information</label>
+        <select class="ui fluid searchdropdown" name="weatherinfo">
+          <option value="">Select</option>
+          <option value="rain">Rain Forecast</option>
+          <option value="wind">Wind Forecast</option>
+          <option value="rainandwind">Rain and Wind</option>
+          <option value="generalforecast">General Forecast</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+      <div class="field"
+      <label>Calendar Information</label>
+      <select class="ui fluid searchdropdown" name="calendarinfo">
+        <option value="">Select</option>
+        <option value="calendar">Calendar</option>
+        <option value="none">None</option>
+      </select>
+      </div>
+      <div class="field"
+      <label>Other Information</label>
+      <select class="ui fluid searchdropdown" name="otherinfo">
+        <option value="">Select</option>
+        <option value="news">News</option>
+        <option value="none">None</option>
+      </select>
+      </div>
+    </div>
   <button class="ui blue submit button">Save Configuration Settings</button>
 </form>
