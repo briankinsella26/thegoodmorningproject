@@ -148,7 +148,6 @@ usage()
 }
 
 echo email is $EMAIL
-echo password is $PASSWORD
 
 while [ "$#" -gt 0 ] ; do
 	case "$1" in
